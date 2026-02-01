@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إندونيسيا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="config.js"></script>
+    <style>
+        /* إخفاء المحتوى افتراضياً حتى يتم التحقق من كلمة المرور */
+        body { background: #f0f2f5; padding: 20px; display: none; }
+        .admin-container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 20px; text-align: right; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Cairo'; box-sizing: border-box; }
+        .form-group textarea { height: 100px; }
+        .save-btn { background: #28a745; color: white; width: 100%; padding: 15px; font-size: 18px; margin-top: 20px; cursor: pointer; border: none; border-radius: 5px; }
+        .save-btn:hover { background: #218838; }
+        h2 { border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; color: #007bff; }
+        .logout-btn { background: #dc3545; color: white; padding: 5px 15px; border-radius: 5px; text-decoration: none; font-size: 14px; float: left; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <a onclick="logout()" class="logout-btn">تسجيل خروج 🚪</a>
+        <h1>⚙️ لوحة التحكم بالموقع</h1>
+        <p>قم بتعديل محتوى الموقع من هنا، ثم اضغط حفظ لتحميل ملف الإعدادات الجديد.</p>
+
+        <form id="adminForm">
+            <h2>1. إعدادات عامة</h2>
+            <div class="form-group">
+                <label>عنوان الموقع الرئيسي:</label>
+                <input type="text" id="siteTitle">
+            </div>
+            <div class="form-group">
+                <label>الوصف الفرعي:</label>
+                <input type="text" id="siteSubtitle">
+            </div>
+
+            <h2>2. شريط الأخبار (افصل بين الأخبار بفاصلة ,)</h2>
+            <div class="form-group">
+                <label>الأخبار العاجلة:</label>
+                <textarea id="newsTicker"></textarea>
+            </div>
+
+            <h2>3. الخبر المميز (الجريدة)</h2>
+            <div class="form-group">
+                <label>عنوان الخبر:</label>
+                <input type="text" id="bannerTitle">
+            </div>
+            <div class="form-group">
+                <label>ملخص الخبر:</label>
+                <textarea id="bannerSummary"></textarea>
+            </div>
+            <div class="form-group">
+                <label>رابط الصورة:</label>
+                <input type="text" id="bannerImage">
+            </div>
+            <div class="form-group">
+                <label>التصنيف (Tag):</label>
+                <input type="text" id="bannerTag">
+            </div>
+
+            <button type="button" class="save-btn" onclick="saveConfig()">💾 حفظ وتحميل ملف الإعدادات</button>
+        </form>
+    </div>
+
+    <script>
+        // دالة لتشفير النصوص (SHA-256)
+        async function hashPassword(string) {
+            const utf8 = new TextEncoder().encode(string);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map((bytes) => bytes.toString(16).padStart(2, '0')).join('');
+        }
+
+        (async function init() {
+            // التجزئة الخاصة بكلمة المرور "admin123"
+            // لتوليد تجزئة جديدة لكلمة مرور مختلفة، يمكنك استخدام Console المتصفح وتشغيل: await hashPassword('كلمة_المرور')
+            const correctHash = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+
+            if (!sessionStorage.getItem('isAdmin')) {
+                const password = prompt("🔒 هذه الصفحة للمسؤولين فقط.\nالرجاء إدخال كلمة المرور للمتابعة:");
+                
+                if (password) {
+                    const hashedPassword = await hashPassword(password);
+                    if (hashedPassword === correctHash) {
+                        sessionStorage.setItem('isAdmin', 'true');
+                        showAdminPanel();
+                    } else {
+                        alert("⛔ كلمة المرور خاطئة! سيتم توجيهك للصفحة الرئيسية.");
+                        window.location.href = "index.html";
+                    }
+                } else {
+                    window.location.href = "index.html";
+                }
+            } else {
+                showAdminPanel();
+            }
+        })();
+
+        function showAdminPanel() {
+            document.body.style.display = "block";
+            // تحميل البيانات الحالية
+            loadData();
+        }
+
+        // البيانات الافتراضية في حال عدم وجود ملف config.js
+        const defaultData = {
+            general: {
+                title: "اكتشف جمال إندونيسيا 🇮🇩",
+                subtitle: "بوابتك الأولى لاستكشاف سحر الطبيعة، الثقافة، والمغامرة في جوهرة الشرق"
+            },
+            newsTicker: [
+                "🎉 عاجل: خصومات 50% على فنادق بالي لهذا الموسم!",
+                "🎓 تعليم: جامعة المحمدية تفتح باب المنح للطلاب العرب.",
+                "✈️ سياحة: إعفاء من التأشيرة لـ 20 دولة جديدة.",
+                "📸 مسابقة: شارك أفضل صورة سياحية: الجائزة تذكرة سفر مجانية!",
+                "🌧️ طقس: أجواء مشمسة ورائعة في جزر جيلي هذا الأسبوع."
+            ],
+            featuredNews: {
+                image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800",
+                tag: "سياحة ✈️",
+                title: "جاكرتا تستعد لاستقبال مليون سائح هذا الصيف 🏙️",
+                summary: "أعلنت وزارة السياحة الإندونيسية عن تسهيلات جديدة في التأشيرات وخصومات على تذاكر الطيران لزيادة عدد الزوار للعاصمة جاكرتا وجزيرة بالي."
+            },
+            randomImages: [
+                { url: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500', caption: 'جاكرتا: قلب إندونيسيا النابض 🏙️' },
+                { url: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500', caption: 'شلالات سيكومبول الساحرة في بالي 💦' },
+                { url: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?w=500', caption: 'شروق الشمس في جبل برومو 🌋' },
+                { url: 'https://images.unsplash.com/photo-1573790387438-4da905039392?w=500', caption: 'حديقة كومودو الوطنية: أرض التنانين 🐉' },
+                { url: 'https://images.unsplash.com/photo-1501179691627-28f8c3bc4846?w=500', caption: 'مصاطب الأرز الخضراء في أوبود 🌾' },
+                { url: 'https://images.unsplash.com/photo-1598887142487-3c834d01d85c?w=500', caption: 'شاطئ كيلينكينج: جوهرة نوسا بينيدا 🏖️' },
+                { url: 'https://images.unsplash.com/photo-1584245727354-365229a0716c?w=500', caption: 'معبد أولون دانو براتان العائم ⛩️' },
+                { url: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500', caption: 'الهدوء في جزر جيلي 🐢' },
+                { url: 'https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?w=500', caption: 'بحيرة توبا: أكبر بحيرة بركانية 🚤' },
+                { url: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500', caption: 'مغامرة في جبل رينجاني ⛺' },
+                { url: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=500', caption: 'شاطئ بينجين: جنة راكبي الأمواج 🏄‍♂️' },
+                { url: 'https://images.unsplash.com/photo-1590606623385-631966496048?w=500', caption: 'الغوص في بوناكين: عالم تحت الماء 🐠' }
+            ]
+        };
+
+        function saveConfig() {
+            const newConfig = {
+                general: {
+                    title: document.getElementById('siteTitle').value,
+                    subtitle: document.getElementById('siteSubtitle').value
+                },
+                newsTicker: document.getElementById('newsTicker').value.split(',').map(s => s.trim()).filter(s => s),
+                featuredNews: {
+                    image: document.getElementById('bannerImage').value,
+                    tag: document.getElementById('bannerTag').value,
+                    title: document.getElementById('bannerTitle').value,
+                    summary: document.getElementById('bannerSummary').value
+                },
+                randomImages: (window.siteConfig && window.siteConfig.randomImages) ? window.siteConfig.randomImages : defaultData.randomImages
+            };
+
+            const fileContent = "window.siteConfig = " + JSON.stringify(newConfig, null, 4) + ";";
+            const blob = new Blob([fileContent], { type: "text/javascript" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "config.js";
+            link.click();
+            alert("تم تحميل ملف config.js الجديد! 📥\nقم باستبدال الملف القديم في مجلد الموقع بهذا الملف لتطبيق التغييرات.");
+        }
+
+        function loadData() {
+            const data = window.siteConfig || defaultData;
+            
+            document.getElementById('siteTitle').value = data.general.title;
+            document.getElementById('siteSubtitle').value = data.general.subtitle;
+            document.getElementById('newsTicker').value = data.newsTicker.join(' , ');
+            document.getElementById('bannerTitle').value = data.featuredNews.title;
+            document.getElementById('bannerSummary').value = data.featuredNews.summary;
+            document.getElementById('bannerImage').value = data.featuredNews.image;
+            document.getElementById('bannerTag').value = data.featuredNews.tag;
+        }
+
+        function logout() {
+            sessionStorage.removeItem('isAdmin');
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

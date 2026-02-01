@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جامعة المحمدية - المنح الدراسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body class="scholarship-page">
+    <!-- شريط المهام (Navigation Bar) -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span style="font-size: 24px;">🎓</span> جامعة المحمدية
+        </div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item active">الرئيسية</a>
+            <a href="#programs" class="nav-item">البرامج</a>
+            <a href="#apply" class="nav-item">التقديم</a>
+        </div>
+    </nav>
+
+    <div class="container full-width-container">
+        <!-- الإعلان الجميل (Hero Banner) -->
+        <div class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>مستقبلك يبدأ هنا 🌟</h1>
+                <p>انضم إلى جامعة المحمدية في إندونيسيا واستفد من منح دراسية ممولة بالكامل.</p>
+                <a href="#apply" class="cta-button">سجل اهتمامك الآن</a>
+            </div>
+        </div>
+
+        <!-- المحتوى -->
+        <div class="content-grid">
+            <div class="info-card">
+                <h3>🏛️ عن الجامعة</h3>
+                <p>جامعة المحمدية هي شبكة من الجامعات الرائدة في إندونيسيا، تشتهر بالتميز الأكاديمي والبيئة الإسلامية المعتدلة والمرافق الحديثة.</p>
+            </div>
+            <div class="info-card">
+                <h3>💰 مميزات المنحة</h3>
+                <ul class="benefits-list">
+                    <li>✅ إعفاء كامل من الرسوم (Tuition Free)</li>
+                    <li>✅ سكن جامعي مجاني</li>
+                    <li>✅ راتب شهري للمعيشة</li>
+                    <li>✅ تأمين صحي شامل</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>📚 التخصصات المتاحة</h3>
+                <p>الطب، الهندسة، تكنولوجيا المعلومات، الاقتصاد، التربية، والشريعة الإسلامية.</p>
+            </div>
+        </div>
+
+        <div id="map-section">
+            <h2>📍 فروعنا الرئيسية</h2>
+            <div id="map"></div>
+        </div>
+
+        <div id="apply" class="apply-section">
+            <h2>كيفية التقديم؟ 📝</h2>
+            <p>التقديم مفتوح الآن للطلاب الدوليين. قم بتجهيز أوراقك (جواز السفر، الشهادات) وتواصل معنا.</p>
+            <button class="apply-btn-large">تحميل دليل الطالب (PDF) 📥</button>
+        </div>
+
+        <div class="footer">
+            <p>🎓 بوابة المنح الدراسية - إندونيسيا | © 2026</p>
+            <p><a href="privacy.html">سياسة الخصوصية</a></p>
+
+            <!-- قسم النشرة البريدية -->
+            <div class="newsletter-form">
+                <h4>📬 اشترك في نشرتنا البريدية</h4>
+                <p>احصل على آخر أخبار السياحة والمنح مباشرة في بريدك.</p>
+                <form>
+                    <input type="email" class="newsletter-input" placeholder="أدخل بريدك الإلكتروني" required>
+                    <button type="submit" class="newsletter-btn">اشتراك</button>
+                </form>
+            </div>
+            <a href="index.html">العودة للمعرض</a>
+        </div>
+    </div>
+
+    <script>
+        // تفعيل الوضع الليلي إذا كان محفوظاً
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // --- تهيئة الخريطة ---
+        const map = L.map('map').setView([-2.5489, 118.0149], 5); // توسيط الخريطة على إندونيسيا
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        const locations = [
+            { lat: -7.9797, lng: 112.6147, name: 'جامعة المحمدية مالانج (UMM)' },
+            { lat: -7.8000, lng: 110.3221, name: 'جامعة المحمدية يوجياكارتا (UMY)' },
+            { lat: -7.5583, lng: 110.7714, name: 'جامعة المحمدية سوراكارتا (UMS)' }
+        ];
+
+        locations.forEach(loc => {
+            L.marker([loc.lat, loc.lng]).addTo(map)
+                .bindPopup(`<b>${loc.name}</b>`)
+                .openPopup();
+        });
+
+    </script>
+</body>
+</html>

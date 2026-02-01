@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - معرض الصور الآمن</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <h1>من نحن ℹ️</h1>
+        <p>مرحباً بك في معرض الصور الآمن! نحن نوفر لك مساحة خاصة ومحمية لحفظ صورك ومشاركتها بسهولة.</p>
+        
+        <div style="text-align: right; margin: 30px 0; line-height: 1.8;">
+            <h3>🌟 مميزاتنا:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ تشفير وحماية للصور</li>
+                <li>✅ وضع ليلي مريح للعين</li>
+                <li>✅ سهولة في الرفع والمشاركة</li>
+            </ul>
+            
+            <h3>📞 اتصل بنا:</h3>
+            <p>لأي استفسارات أو اقتراحات، يمكنك مراسلتنا عبر البريد الإلكتروني:</p>
+            <a href="mailto:mozmbaer@gmail.com" style="font-size: 18px;">mozmbaer@gmail.com</a>
+        </div>
+
+        <a href="index.html">
+            <button>العودة للمعرض 🏠</button>
+        </a>
+
+        <div class="footer">
+            <p>🔒 جميع الصور مشفرة ومحمية | © 2026</p>
+            <p><a href="privacy.html">سياسة الخصوصية</a></p>
+        </div>
+    </div>
+
+    <!-- سكربت بسيط لتطبيق الوضع الليلي إذا كان مفعلاً -->
+    <script>
+        if (localStorage.getItem('darkMode') === 'enabled') document.body.classList.add('dark-mode');
+    </script>
+</body>
+</html>
