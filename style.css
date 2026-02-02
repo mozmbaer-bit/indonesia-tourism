@@ -578,6 +578,54 @@ a {
     transform: scale(1.1);
 }
 
+/* تنسيق زر LinkedIn */
+.linkedin-btn {
+    position: static;
+    background-color: white;
+    color: #0077b5;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.linkedin-btn:hover {
+    background-color: #0077b5;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* تنسيق زر Telegram */
+.telegram-btn {
+    position: static;
+    background-color: white;
+    color: #0088cc;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.telegram-btn:hover {
+    background-color: #0088cc;
+    color: white;
+    transform: scale(1.1);
+}
+
 /* تنسيق شريط التحميل */
 .progress-container {
     width: 100%;

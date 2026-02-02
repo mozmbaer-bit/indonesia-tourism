@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <!-- الصفحة الرئيسية: أهم صفحة -->
+   <url>
+      <loc>https://YOUR_USERNAME.github.io/REPO_NAME/index.html</loc>
+      <lastmod>2026-02-01</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <!-- صفحة المنح الدراسية: مهمة جداً -->
+   <url>
+      <loc>https://YOUR_USERNAME.github.io/REPO_NAME/muhammadiyah.html</loc>
+      <lastmod>2026-02-01</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <!-- صفحة من نحن -->
+   <url>
+      <loc>https://YOUR_USERNAME.github.io/REPO_NAME/about.html</loc>
+      <lastmod>2026-02-01</lastmod>
+      <priority>0.5</priority>
+   </url>
+   <!-- صفحة سياسة الخصوصية -->
+   <url>
+      <loc>https://YOUR_USERNAME.github.io/REPO_NAME/privacy.html</loc>
+      <priority>0.3</priority>
+   </url>
+</urlset>

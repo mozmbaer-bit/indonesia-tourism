@@ -110,7 +110,8 @@
         const defaultData = {
             general: {
                 title: "اكتشف جمال إندونيسيا 🇮🇩",
-                subtitle: "بوابتك الأولى لاستكشاف سحر الطبيعة، الثقافة، والمغامرة في جوهرة الشرق"
+                subtitle: "بوابتك الأولى لاستكشاف سحر الطبيعة، الثقافة، والمغامرة في جوهرة الشرق",
+                lastUpdated: new Date().toLocaleString('ar-EG')
             },
             newsTicker: [
                 "🎉 عاجل: خصومات 50% على فنادق بالي لهذا الموسم!",
@@ -145,7 +146,8 @@
             const newConfig = {
                 general: {
                     title: document.getElementById('siteTitle').value,
-                    subtitle: document.getElementById('siteSubtitle').value
+                    subtitle: document.getElementById('siteSubtitle').value,
+                    lastUpdated: new Date().toLocaleString('ar-EG')
                 },
                 newsTicker: document.getElementById('newsTicker').value.split(',').map(s => s.trim()).filter(s => s),
                 featuredNews: {
@@ -163,7 +165,7 @@
             link.href = URL.createObjectURL(blob);
             link.download = "config.js";
             link.click();
-            alert("تم تحميل ملف config.js الجديد! 📥\nقم باستبدال الملف القديم في مجلد الموقع بهذا الملف لتطبيق التغييرات.");
+            alert("تم تحميل ملف config.js الجديد! 📥\n\n⚠️ هام جداً:\n1. استبدل الملف القديم في مجلد موقعك بهذا الملف.\n2. ارفع الملف الجديد إلى GitHub ليظهر التحديث للناس.");
         }
 
         function loadData() {

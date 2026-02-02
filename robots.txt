@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# منع محركات البحث من أرشفة لوحة التحكم وملف الإعدادات
+Disallow: /admin.html
+Disallow: /config.js
+
+# رابط خريطة الموقع (استبدل الرابط أدناه برابط موقعك الحقيقي)
+Sitemap: https://YOUR_USERNAME.github.io/REPO_NAME/sitemap.xml
