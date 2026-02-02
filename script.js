@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = document.createElement('img');
         img.src = src;
         img.alt = 'صورة المعرض';
+        img.loading = 'lazy'; // تحسين السرعة: تحميل الصورة فقط عند الوصول إليها
 
         // إنشاء حاوية الأزرار
         const actionsDiv = document.createElement('div');

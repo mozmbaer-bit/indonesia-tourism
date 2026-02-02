@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🔴 الصق كود تتبع جوجل (Google Analytics) هنا في هذا المكان الفارغ 🔴 -->
     <!-- Google tag (gtag.js) -->
-     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2ZVKZY47G"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2ZVKZY47G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -16,6 +14,10 @@
 
   gtag('config', 'G-Z2ZVKZY47G');
 </script>
+
+    <!-- 💰 مكان كود إعلانات جوجل (Google AdSense) 💰 -->
+    <!-- بعد قبولك في AdSense، الصق الكود هنا -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
     <!-- تحسينات SEO لمحركات بحث جوجل -->
     <meta name="description" content="دليل السياحة الشامل في إندونيسيا. اكتشف أجمل الجزر مثل بالي وجاكرتا، وتعرف على المنح الدراسية في جامعة المحمدية.">
@@ -33,6 +35,20 @@
     <meta name="twitter:title" content="السياحة في إندونيسيا 🇮🇩">
     <meta name="twitter:description" content="اكتشف سحر إندونيسيا، من بالي إلى جاكرتا. دليل سياحي شامل وفرص منح دراسية.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200">
+    
+    <!-- الرابط الأساسي (Canonical) لمنع التكرار -->
+    <link rel="canonical" href="https://mozmbaer-bit.github.io/indonesia-tourism/index.html">
+
+    <!-- البيانات المنظمة (Schema.org) لتعريف الموقع لجوجل -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Wonderful Indonesia",
+      "url": "https://mozmbaer-bit.github.io/indonesia-tourism/",
+      "description": "دليل السياحة الشامل في إندونيسيا والمنح الدراسية."
+    }
+    </script>
 
     <title>السياحة في إندونيسيا 🇮🇩</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -125,15 +141,15 @@
         <ul class="gallery">
             <!-- الصور الثابتة نضعها داخل القائمة لتأخذ نفس التنسيق -->
             <li>
-                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500" alt="Bali">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500" alt="Bali" loading="lazy">
                 <div class="caption">جزيرة بالي الساحرة 🌴</div>
             </li>
             <li>
-                <img src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=500" alt="Borobudur">
+                <img src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=500" alt="Borobudur" loading="lazy">
                 <div class="caption">معبد بوروبودور التاريخي 🏛️</div>
             </li>
             <li>
-                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9dab?w=500" alt="Raja Ampat">
+                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9dab?w=500" alt="Raja Ampat" loading="lazy">
                 <div class="caption">جزر راجا أمبات الخلابة 🌊</div>
             </li>
         </ul>
@@ -144,7 +160,7 @@
         <h2 class="section-title">📰 آخر الأخبار</h2>
         <div class="news-banner">
             <div class="news-image">
-                <img id="newsBannerImage" src="" alt="News">
+                <img id="newsBannerImage" src="" alt="News" loading="lazy">
                 <span id="newsBannerTag" class="news-tag">...</span>
             </div>
             <div class="news-content">
@@ -159,9 +175,15 @@
         <!-- قسم التعليم (المنح) -->
         <h2 class="section-title">🎓 التعليم والمنح الدراسية</h2>
         <div class="education-section">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" alt="University" class="edu-img">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" alt="University" class="edu-img" loading="lazy">
             <h3>منح جامعة المحمدية الممولة بالكامل</h3>
             <p>فرصة لا تعوض للدراسة في أفضل الجامعات الإندونيسية مع تغطية شاملة للمصاريف.</p>
+            
+            <!-- فيديو تعريفي -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/ضع_كود_الفيديو_الخاص_بك_هنا?autoplay=1&mute=1" title="University Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
             <a href="muhammadiyah.html" class="edu-btn">تفاصيل المنحة والتقديم 📝</a>
         </div>
 
@@ -172,26 +194,26 @@
                 <div class="logos-track">
                     <div class="logo-card">
                         <a href="#universitiesMap" class="fly-to-map" data-lat="-0.8776" data-lng="131.2563">
-                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo">
+                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo" loading="lazy">
                         </a>
                         <h3>جامعة سورونج</h3>
                     </div>
                     <div class="logo-card">
                         <a href="#universitiesMap" class="fly-to-map" data-lat="-7.9213" data-lng="112.5993">
-                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo">
+                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo" loading="lazy">
                         </a>
                         <h3>جامعة مالانج</h3>
                     </div>
                     <!-- تكرار للحركة -->
                     <div class="logo-card">
                         <a href="#universitiesMap" class="fly-to-map" data-lat="-0.8776" data-lng="131.2563">
-                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo">
+                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo" loading="lazy">
                         </a>
                         <h3>جامعة سورونج</h3>
                     </div>
                     <div class="logo-card">
                         <a href="#universitiesMap" class="fly-to-map" data-lat="-7.9213" data-lng="112.5993">
-                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo">
+                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo" loading="lazy">
                         </a>
                         <h3>جامعة مالانج</h3>
                     </div>
