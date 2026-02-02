@@ -659,6 +659,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // استخدام القائمة من ملف الإعدادات
         const indonesiaImages = window.siteConfig ? window.siteConfig.randomImages : [];
 
+        if (!indonesiaImages || indonesiaImages.length === 0) {
+            alert('لا توجد صور متاحة للإضافة حالياً.');
+            button.textContent = originalText;
+            button.disabled = false;
+            return;
+        }
+
         try {
             // اختيار صورة عشوائية من القائمة
             const randomDest = indonesiaImages[Math.floor(Math.random() * indonesiaImages.length)];
@@ -691,6 +698,16 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadBtn.addEventListener('click', () => {
         playSound();
         fileInput.click(); // محاكاة النقر على input المخفي
+    });
+
+    // --- كود حذف جميع الصور (إصلاح الزر المعطل) ---
+    clearBtn.addEventListener('click', () => {
+        playSound();
+        if (confirm('هل أنت متأكد من حذف جميع الصور؟ ⚠️\nلا يمكن التراجع عن هذا الإجراء.')) {
+            list.innerHTML = ''; // مسح القائمة من الصفحة
+            localStorage.removeItem('myGallery'); // مسح التخزين المحلي
+            alert('تم حذف جميع الصور بنجاح! 🗑️');
+        }
     });
 
     fileInput.addEventListener('change', (e) => {

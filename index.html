@@ -7,13 +7,14 @@
     
     <!-- 🔴 الصق كود تتبع جوجل (Google Analytics) هنا في هذا المكان الفارغ 🔴 -->
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMLZS12FJX"></script>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z2ZVKZY47G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-MMLZS12FJX');
+  gtag('config', 'G-Z2ZVKZY47G');
 </script>
 
     <!-- تحسينات SEO لمحركات بحث جوجل -->
@@ -42,6 +43,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="config.js"></script>
     <script src="script.js" defer></script>
 </head>
@@ -160,6 +163,46 @@
             <h3>منح جامعة المحمدية الممولة بالكامل</h3>
             <p>فرصة لا تعوض للدراسة في أفضل الجامعات الإندونيسية مع تغطية شاملة للمصاريف.</p>
             <a href="muhammadiyah.html" class="edu-btn">تفاصيل المنحة والتقديم 📝</a>
+        </div>
+
+        <!-- قسم شركاء النجاح (الجامعات) -->
+        <div class="logos-section" style="margin-top: 30px; padding: 20px;">
+            <h3 style="color: #555; margin-bottom: 20px;">جامعاتنا الشريكة 🤝</h3>
+            <div class="logos-slider">
+                <div class="logos-track">
+                    <div class="logo-card">
+                        <a href="#universitiesMap" class="fly-to-map" data-lat="-0.8776" data-lng="131.2563">
+                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                    </div>
+                    <div class="logo-card">
+                        <a href="#universitiesMap" class="fly-to-map" data-lat="-7.9213" data-lng="112.5993">
+                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                    </div>
+                    <!-- تكرار للحركة -->
+                    <div class="logo-card">
+                        <a href="#universitiesMap" class="fly-to-map" data-lat="-0.8776" data-lng="131.2563">
+                            <img src="uni_logo1.png" alt="جامعة سورونج" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                    </div>
+                    <div class="logo-card">
+                        <a href="#universitiesMap" class="fly-to-map" data-lat="-7.9213" data-lng="112.5993">
+                            <img src="uni_logo2.svg" alt="جامعة مالانج" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم خريطة الجامعات -->
+        <div class="logos-section" style="margin-top: 30px;">
+            <h3 style="color: #555; margin-bottom: 20px;">مواقع الجامعات على الخريطة 📍</h3>
+            <div id="universitiesMap" style="height: 400px; width: 100%; border-radius: 15px; z-index: 1;"></div>
         </div>
         
         <div class="footer">

@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="logo.png" type="png /png">
+
 </head>
 <body class="scholarship-page">
     <!-- شريط المهام (Navigation Bar) -->
@@ -63,15 +65,159 @@
             </div>
         </div>
 
+        <!-- قسم شعارات الجامعة (جديد) -->
+        <div class="logos-section">
+            <h2>فروعنا المتميزة في مدينتك 🏙️</h2>
+            <div class="logos-slider">
+                <div class="logos-track">
+                    <!-- المجموعة الأصلية -->
+                    <div class="logo-card">
+                        <a href="https://unamin.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo1.png" alt="شعار الجامعة 1" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                        <p>تميز أكاديمي وريادة في التعليم.</p>
+                    </div>
+                    <div class="logo-card">
+                        <a href="https://www.umm.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo2.svg" alt="شعار الجامعة 2" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                        <p>بيئة تعليمية إسلامية حديثة.</p>
+                    </div>
+                    <!-- تكرار 1 (للحركة المستمرة) -->
+                    <div class="logo-card">
+                        <a href="https://unamin.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo1.png" alt="شعار الجامعة 1" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                        <p>تميز أكاديمي وريادة في التعليم.</p>
+                    </div>
+                    <div class="logo-card">
+                        <a href="https://www.umm.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo2.svg" alt="شعار الجامعة 2" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                        <p>بيئة تعليمية إسلامية حديثة.</p>
+                    </div>
+                    <!-- تكرار 2 -->
+                    <div class="logo-card">
+                        <a href="https://unamin.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo1.png" alt="شعار الجامعة 1" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                        <p>تميز أكاديمي وريادة في التعليم.</p>
+                    </div>
+                    <div class="logo-card">
+                        <a href="https://www.umm.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo2.svg" alt="شعار الجامعة 2" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                        <p>بيئة تعليمية إسلامية حديثة.</p>
+                    </div>
+                    <!-- تكرار 3 -->
+                    <div class="logo-card">
+                        <a href="https://unamin.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo1.png" alt="شعار الجامعة 1" class="uni-logo">
+                        </a>
+                        <h3>جامعة سورونج</h3>
+                        <p>تميز أكاديمي وريادة في التعليم.</p>
+                    </div>
+                    <div class="logo-card">
+                        <a href="https://www.umm.ac.id/" target="_blank" title="زيارة موقع الجامعة">
+                            <img src="uni_logo2.svg" alt="شعار الجامعة 2" class="uni-logo">
+                        </a>
+                        <h3>جامعة مالانج</h3>
+                        <p>بيئة تعليمية إسلامية حديثة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="map-section">
             <h2>📍 فروعنا الرئيسية</h2>
             <div id="map"></div>
         </div>
 
+        <!-- حاسبة تكاليف المعيشة -->
+        <div class="calculator-section">
+            <h2>🧮 حاسبة تكاليف المعيشة (تقديرية)</h2>
+            <div class="calc-container">
+                <div class="calc-inputs">
+                    <div class="form-group">
+                        <label>🏠 السكن (شهرياً):</label>
+                        <select id="calc-housing" class="calc-select">
+                            <option value="800000">سكن طلابي بسيط (Kost) - 800k IDR</option>
+                            <option value="1500000" selected>سكن طلابي مكيف (Kost AC) - 1.5m IDR</option>
+                            <option value="3500000">شقة استوديو خاصة - 3.5m IDR</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🍔 الطعام (شهرياً):</label>
+                        <select id="calc-food" class="calc-select">
+                            <option value="1200000">طبخ منزلي / أكل شعبي - 1.2m IDR</option>
+                            <option value="2500000" selected>متوسط (مطاعم عادية) - 2.5m IDR</option>
+                            <option value="4000000">رفاهية (مطاعم ومولات) - 4m IDR</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🛵 المواصلات والإنترنت:</label>
+                        <select id="calc-misc" class="calc-select">
+                            <option value="300000">مواصلات عامة + نت أساسي - 300k IDR</option>
+                            <option value="800000" selected>تطبيقات (Gojek) + نت جيد - 800k IDR</option>
+                            <option value="1500000">استئجار دراجة + نت سريع - 1.5m IDR</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎓 الرسوم الدراسية (متوسط شهري):</label>
+                        <select id="calc-tuition" class="calc-select">
+                            <option value="0" selected>منحة كاملة (0 IDR)</option>
+                            <option value="1000000">منحة جزئية (1m IDR)</option>
+                            <option value="3000000">تمويل ذاتي (3m IDR)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <h3>المصروف الشهري المتوقع:</h3>
+                    <div class="total-amount">
+                        <span id="total-idr">0</span> <small>IDR</small>
+                    </div>
+                    <div class="total-usd">
+                        ≈ <span id="total-usd">0</span> $
+                    </div>
+                    <div style="position: relative; height: 200px; width: 100%; margin-top: 20px;">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                    <p class="note">* هذه أرقام تقديرية وقد تختلف حسب المدينة ونمط الحياة.</p>
+                </div>
+            </div>
+        </div>
+
         <div id="apply" class="apply-section">
             <h2>كيفية التقديم؟ 📝</h2>
             <p>التقديم مفتوح الآن للطلاب الدوليين. قم بتجهيز أوراقك (جواز السفر، الشهادات) وتواصل معنا.</p>
-            <button class="apply-btn-large">تحميل دليل الطالب (PDF) 📥</button>
+            <a href="guide.pdf" class="apply-btn-large" download="Student_Guide_2026.pdf">تحميل دليل الطالب (PDF) 📥</a>
+        </div>
+
+        <!-- قسم الأسئلة الشائعة (FAQ) -->
+        <div class="faq-section">
+            <h2>الأسئلة الشائعة ❓</h2>
+            <div class="faq-item">
+                <button class="faq-question">هل المنحة تغطي تذاكر الطيران؟ <span class="arrow">▼</span></button>
+                <div class="faq-answer"><p>نعم، المنحة تغطي تذاكر الطيران ذهاباً وإياباً مرة واحدة عند بداية ونهاية الدراسة.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">هل يشترط إتقان اللغة الإندونيسية؟ <span class="arrow">▼</span></button>
+                <div class="faq-answer"><p>لا، ستحصل على سنة تحضيرية لدراسة اللغة الإندونيسية (BIPA) مجاناً قبل البدء في التخصص.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">هل يمكنني اصطحاب عائلتي؟ <span class="arrow">▼</span></button>
+                <div class="faq-answer"><p>المنحة مخصصة للطالب فقط، ولكن يمكنك اصطحاب العائلة على نفقتك الخاصة بعد الحصول على إقامة الطالب.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">ما هو السن الأقصى للتقديم؟ <span class="arrow">▼</span></button>
+                <div class="faq-answer"><p>للبكالوريوس 21 سنة، للماجستير 35 سنة، وللدكتوراه 40 سنة.</p></div>
+            </div>
         </div>
 
         <div class="footer">
@@ -116,6 +262,88 @@
                 .openPopup();
         });
 
+        // --- تفعيل الأزرار التفاعلية ---
+        document.querySelector('.newsletter-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = e.target.querySelector('input');
+            if (emailInput && emailInput.value) {
+                alert(`شكراً لاشتراكك! 🎉\nسيتم إرسال أخبار المنح إلى: ${emailInput.value}`);
+                emailInput.value = '';
+            }
+        });
+
+        // --- كود الأسئلة الشائعة (FAQ) ---
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const answer = button.nextElementSibling;
+                if (button.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+
+        // --- كود حاسبة التكاليف ---
+        const housingSelect = document.getElementById('calc-housing');
+        const foodSelect = document.getElementById('calc-food');
+        const miscSelect = document.getElementById('calc-misc');
+        const tuitionSelect = document.getElementById('calc-tuition');
+        const totalIdrSpan = document.getElementById('total-idr');
+        const totalUsdSpan = document.getElementById('total-usd');
+        let expenseChart = null;
+
+        function calculateTotal() {
+            const housing = parseInt(housingSelect.value);
+            const food = parseInt(foodSelect.value);
+            const misc = parseInt(miscSelect.value);
+            const tuition = parseInt(tuitionSelect.value);
+            
+            const totalIdr = housing + food + misc + tuition;
+            const totalUsd = Math.round(totalIdr / 15500); // سعر صرف تقريبي
+
+            totalIdrSpan.textContent = totalIdr.toLocaleString('en-US');
+            totalUsdSpan.textContent = totalUsd.toLocaleString('en-US');
+            
+            updateChart(housing, food, misc, tuition);
+        }
+
+        function updateChart(housing, food, misc, tuition) {
+            const ctx = document.getElementById('expenseChart').getContext('2d');
+            
+            if (expenseChart) {
+                expenseChart.data.datasets[0].data = [housing, food, misc, tuition];
+                expenseChart.update();
+            } else {
+                expenseChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['السكن', 'الطعام', 'مواصلات ونت', 'رسوم دراسية'],
+                        datasets: [{
+                            data: [housing, food, misc, tuition],
+                            backgroundColor: ['#ffc107', '#17a2b8', '#e83e8c', '#f8f9fa'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: 'white', font: { family: 'Cairo' } } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // تحديث الحساب عند تغيير أي خيار
+        [housingSelect, foodSelect, miscSelect, tuitionSelect].forEach(select => {
+            select.addEventListener('change', calculateTotal);
+        });
+
+        // الحساب الأولي عند تحميل الصفحة
+        calculateTotal();
     </script>
 </body>
 </html>

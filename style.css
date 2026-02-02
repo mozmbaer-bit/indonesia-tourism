@@ -1369,6 +1369,8 @@ body.dark-mode .info-section h3 {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
     transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .apply-btn-large:hover {
@@ -1826,6 +1828,154 @@ body.dark-mode .newsletter-form h4, body.dark-mode .newsletter-form p {
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }
 
+/* --- تنسيقات الأسئلة الشائعة (FAQ) --- */
+.faq-section {
+    margin: 40px 0;
+    text-align: right;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #007bff;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: right;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    color: #333;
+    transition: background 0.3s;
+    border-radius: 0; /* إلغاء الحواف الدائرية الافتراضية للأزرار */
+    box-shadow: none; /* إلغاء الظل الافتراضي للأزرار */
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+    transform: none; /* إلغاء تأثير الحركة الافتراضي للأزرار */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+}
+
+.faq-answer p {
+    padding: 20px;
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    border-top: 1px solid #eee;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.faq-question.active .arrow {
+    transform: rotate(180deg);
+}
+
+.faq-question.active {
+    background: #e3f2fd;
+    color: #007bff;
+}
+
+/* --- تنسيقات حاسبة التكاليف --- */
+.calculator-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+    border: 1px solid #eee;
+}
+
+.calculator-section h2 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 25px;
+}
+
+.calc-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.calc-inputs {
+    flex: 1;
+    min-width: 280px;
+}
+
+.calc-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    background: #f8f9fa;
+    outline: none;
+    cursor: pointer;
+}
+
+.calc-result {
+    flex: 1;
+    min-width: 280px;
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+}
+
+.calc-result h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.total-amount {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.total-usd {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.note {
+    font-size: 0.8em;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
 /* دعم الوضع الليلي */
 body.dark-mode .currency-converter {
     background: #1a252f;
@@ -1846,5 +1996,136 @@ body.dark-mode .input-group label {
     0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
     70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
     100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+/* دعم الوضع الليلي للأسئلة الشائعة */
+body.dark-mode .faq-item {
+    background: #2c3e50;
+    border-color: #444;
+}
+
+body.dark-mode .faq-question {
+    background: #34495e;
+    color: #fff;
+}
+
+body.dark-mode .faq-question:hover, body.dark-mode .faq-question.active {
+    background: #1abc9c;
+}
+
+body.dark-mode .faq-answer {
+    background: #2c3e50;
+}
+
+body.dark-mode .faq-answer p {
+    color: #ddd;
+    border-top-color: #444;
+}
+
+/* دعم الوضع الليلي للحاسبة */
+body.dark-mode .calculator-section {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .calc-select {
+    background: #2c3e50;
+    border-color: #444;
+    color: #fff;
+}
+
+/* --- تنسيقات قسم الشعارات --- */
+.logos-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+
+.logos-section h2 {
+    color: #007bff;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.logos-slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+}
+
+.logos-track {
+    display: flex;
+    gap: 50px;
+    width: max-content;
+    direction: ltr; /* لضمان اتجاه الحركة الصحيح */
+    padding-right: 50px; /* لتعويض الفراغ عند التكرار */
+    animation: scrollLogos 30s linear infinite;
+}
+
+.logo-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+    flex-shrink: 0; /* منع تقلص البطاقات */
+}
+
+.logo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.uni-logo {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+}
+
+.logo-card h3 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.logo-card p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* إيقاف الحركة عند تمرير الماوس */
+.logos-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* التحرك لنصف المسافة (بسبب التكرار) */
+}
+
+/* دعم الوضع الليلي للشعارات */
+body.dark-mode .logos-section {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .logo-card {
+    background: #2c3e50;
+    border-color: #444;
+}
+
+body.dark-mode .logo-card h3 {
+    color: #fff;
+}
+
+body.dark-mode .logo-card p {
+    color: #ccc;
 }
 }
