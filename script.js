@@ -205,6 +205,11 @@ document.addEventListener('DOMContentLoaded', () => {
         telegramBtn.innerHTML = '✈️';
         telegramBtn.title = 'مشاركة على Telegram';
 
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '📋';
+        copyBtn.title = 'نسخ رابط الصورة';
+
         const caption = document.createElement('div');
         caption.className = 'caption';
         caption.textContent = captionText;
@@ -221,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         actionsDiv.appendChild(twitterBtn);
         actionsDiv.appendChild(linkedinBtn);
         actionsDiv.appendChild(telegramBtn);
+        actionsDiv.appendChild(copyBtn);
         actionsDiv.appendChild(downloadBtn);
         actionsDiv.appendChild(printBtn);
         actionsDiv.appendChild(deleteBtn);
@@ -868,6 +874,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlToShare = !img.src.startsWith('data:') ? img.src : window.location.href;
             const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(urlToShare)}&text=${encodeURIComponent(caption)}`;
             window.open(telegramUrl, '_blank');
+        }
+        // إذا ضغطنا على زر النسخ
+        else if (e.target.closest('.copy-btn')) {
+            const li = e.target.closest('.copy-btn').parentElement;
+            const img = li.querySelector('img');
+            const urlToShare = !img.src.startsWith('data:') ? img.src : window.location.href;
+            
+            navigator.clipboard.writeText(urlToShare).then(() => {
+                alert('تم نسخ رابط الصورة! 📋');
+            }).catch(() => {
+                prompt('انسخ الرابط يدوياً:', urlToShare);
+            });
+            playSound();
         }
     });
 

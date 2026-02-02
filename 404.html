@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة غير موجودة - 404</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background: #f4f7f6;
+            text-align: center;
+        }
+        h1 { font-size: 80px; margin: 0; color: #007bff; }
+        p { font-size: 20px; color: #555; margin-bottom: 30px; }
+        .home-btn {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            transition: 0.3s;
+        }
+        .home-btn:hover { background: #218838; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <h1>404</h1>
+    <h2>عذراً، هذه الصفحة تاهت في الغابة! 🌴</h2>
+    <p>يبدو أن الرابط الذي تحاول الوصول إليه غير موجود أو تم نقله.</p>
+    
+    <a href="index.html" class="home-btn">العودة للرئيسية 🏠</a>
+
+    <script>
+        // دعم الوضع الليلي
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.style.background = '#121212';
+            document.querySelector('h2').style.color = '#fff';
+            document.querySelector('p').style.color = '#ccc';
+        }
+    </script>
+</body>
+</html>

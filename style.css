@@ -626,6 +626,24 @@ a {
     transform: scale(1.1);
 }
 
+/* تنسيق زر النسخ */
+.copy-btn {
+    position: static;
+    background-color: white;
+    color: #6610f2;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.copy-btn:hover { background-color: #6610f2; color: white; transform: scale(1.1); }
+
 /* تنسيق شريط التحميل */
 .progress-container {
     width: 100%;
